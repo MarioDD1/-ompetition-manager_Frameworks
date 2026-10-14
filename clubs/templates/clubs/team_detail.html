@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ team.name }}{% endblock %}
+{% block content %}
+  <a href="{% url 'clubs:list' %}">← К списку команд</a>
+  <h1>{{ team.name }}</h1>
+  <p>ID команды: {{ team.id }} · Участников: {{ members|length }}</p>
+  <h2>Состав команды</h2>
+  <ul class="card">
+    {% for participant in members %}
+      <li><a href="{% url 'athletes:detail' participant.id %}">{{ participant.name }}</a> · {{ participant.age }} лет</li>
+    {% empty %}
+      <li>Участников пока нет.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

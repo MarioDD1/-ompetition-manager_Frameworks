@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Команды{% endblock %}
+{% block content %}
+  <h1>Команды</h1>
+  <div class="cards-grid">
+    {% for item in teams %}
+      <article class="card">
+        <h2><a href="{% url 'clubs:detail' item.team.id %}">{{ item.team.name }}</a></h2>
+        <p>ID: {{ item.team.id }}</p>
+        <p>Участников: {{ item.members_count }}</p>
+      </article>
+    {% empty %}
+      <p class="empty-message">Команд пока нет.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+<nav class="site-nav" aria-label="Основная навигация">
+  <a href="{% url 'homepage:index' %}"{% if request.resolver_match.namespace == 'homepage' %} aria-current="page"{% endif %}>Главная</a>
+  <a href="{% url 'events:list' %}"{% if request.resolver_match.namespace == 'events' %} aria-current="page"{% endif %}>Соревнования</a>
+  <a href="{% url 'athletes:list' %}"{% if request.resolver_match.namespace == 'athletes' %} aria-current="page"{% endif %}>Участники</a>
+  <a href="{% url 'clubs:list' %}"{% if request.resolver_match.namespace == 'clubs' %} aria-current="page"{% endif %}>Команды</a>
+  <a href="{% url 'scores:list' %}"{% if request.resolver_match.namespace == 'scores' %} aria-current="page"{% endif %}>Результаты</a>
+</nav>

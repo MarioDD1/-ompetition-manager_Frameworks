@@ -1,0 +1,8 @@
+<article class="card competition-card">
+  <h2><a href="{% url 'events:detail' competition.id %}">{{ competition.name }}</a></h2>
+  <p>Дата: {{ competition.date|date:'d.m.Y' }}</p>
+  <p>Возраст от {{ competition.minimum_age }} лет · Вместимость: {{ competition.capacity }}</p>
+  <p>Свободных мест: {{ free_places }}</p>
+  {% include 'events/includes/competition_status.html' with free_places=free_places only %}
+  <p><a href="{% url 'events:detail' competition.id %}">Открыть соревнование →</a></p>
+</article>

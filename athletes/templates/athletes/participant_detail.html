@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{ participant.name }}{% endblock %}
+{% block content %}
+  <a href="{% url 'athletes:list' %}">← К списку участников</a>
+  <h1>{{ participant.name }}</h1>
+  <section class="card">
+    <p>ID: {{ participant.id }} · Возраст: {{ participant.age }} лет</p>
+    <p>Команда: {% include 'athletes/includes/team_link.html' with participant=participant only %}</p>
+    {% if participant.competitions %}
+      <span class="status status-open">Есть регистрации</span>
+    {% else %}
+      <span class="status status-neutral">Нет активных регистраций</span>
+    {% endif %}
+  </section>
+  <h2>Регистрации</h2>
+  <ul class="card">
+    {% for competition in participant.competitions %}
+      <li><a href="{% url 'events:detail' competition.id %}">{{ competition.name }}</a> · {{ competition.date|date:'d.m.Y' }}</li>
+    {% empty %}
+      <li>Регистраций пока нет.</li>
+    {% endfor %}
+  </ul>
+  <h2>Результаты</h2>
+  <ul class="card">
+    {% for result in results %}
+      <li><a href="{% url 'events:detail' result.competition.id %}">{{ result.competition.name }}</a>: {{ result.time_seconds|floatformat:1 }} с — <a href="{% url 'scores:detail' result.id %}">Открыть результат</a></li>
+    {% empty %}
+      <li>Результатов пока нет.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

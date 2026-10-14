@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <section class="card">
+    <p>{{ message }}</p>
+    <a href="{% url back_route %}">Вернуться к списку или на главную</a>
+  </section>
+{% endblock %}

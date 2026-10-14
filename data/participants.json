@@ -1,0 +1,6 @@
+[
+  {"id": 1, "name": "Иван Петров", "age": 20, "team_id": 1, "competition_ids": [1]},
+  {"id": 2, "name": "Анна Смирнова", "age": 18, "team_id": 2, "competition_ids": [1]},
+  {"id": 3, "name": "Олег Сидоров", "age": 16, "team_id": null, "competition_ids": []},
+  {"id": 4, "name": "Мария Иванова", "age": 22, "team_id": 1, "competition_ids": []}
+]

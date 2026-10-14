@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Результаты{% endblock %}
+{% block content %}
+  <h1>Результаты</h1>
+  <p>Количество результатов: {{ rows|length }}</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr><th scope="col">ID</th><th scope="col">Соревнование</th><th scope="col">Участник</th><th scope="col">Время, с</th><th scope="col">Место</th></tr></thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            <td><a href="{% url 'scores:detail' row.result.id %}">{{ row.result.id }}</a></td>
+            <td><a href="{% url 'events:detail' row.result.competition.id %}">{{ row.result.competition.name }}</a></td>
+            <td><a href="{% url 'athletes:detail' row.result.participant.id %}">{{ row.result.participant.name }}</a></td>
+            <td>{{ row.result.time_seconds|floatformat:1 }}</td>
+            <td>{{ row.place }}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5">Результатов пока нет.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

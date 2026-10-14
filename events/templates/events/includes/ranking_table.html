@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead><tr><th scope="col">Место</th><th scope="col">Участник</th><th scope="col">Время, с</th><th scope="col">Результат</th></tr></thead>
+    <tbody>
+      {% for row in ranked_results %}
+        <tr>
+          <td>{{ row.place }}</td>
+          <td><a href="{% url 'athletes:detail' row.result.participant.id %}">{{ row.result.participant.name }}</a></td>
+          <td>{{ row.result.time_seconds|floatformat:1 }}</td>
+          <td><a href="{% url 'scores:detail' row.result.id %}">Открыть</a></td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="4">Результатов пока нет.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

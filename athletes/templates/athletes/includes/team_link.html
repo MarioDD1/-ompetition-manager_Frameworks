@@ -1,0 +1,5 @@
+{% if participant.team %}
+  <a href="{% url 'clubs:detail' participant.team.id %}">{{ participant.team.name }}</a>
+{% else %}
+  {{ participant.team.name|default:'Без команды' }}
+{% endif %}

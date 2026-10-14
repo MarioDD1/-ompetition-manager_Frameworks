@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Участники{% endblock %}
+{% block content %}
+  <h1>Участники</h1>
+  <p>Количество участников: {{ participants|length }}</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr><th scope="col">ID</th><th scope="col">Имя</th><th scope="col">Возраст</th><th scope="col">Команда</th><th scope="col">Регистраций</th></tr></thead>
+      <tbody>
+        {% for participant in participants %}
+          <tr>
+            <td>{{ participant.id }}</td>
+            <td><a href="{% url 'athletes:detail' participant.id %}">{{ participant.name }}</a></td>
+            <td>{{ participant.age }}</td>
+            <td>{% include 'athletes/includes/team_link.html' with participant=participant only %}</td>
+            <td>{{ participant.competitions|length }}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5">Участников пока нет.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

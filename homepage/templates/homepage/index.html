@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Главная страница{% endblock %}
+{% block content %}
+  <h1>Главная страница</h1>
+  <section class="card intro">
+    <h2>Все соревнования в одном месте</h2>
+    <p>Откройте соревнование, посмотрите участников, команды и итоговые места.</p>
+    <p>Меньшее время выступления считается лучшим.</p>
+    <a class="button" href="{% url 'events:list' %}">Открыть соревнования</a>
+  </section>
+  <h2>Данные проекта</h2>
+  <div class="stats-grid">
+    <a class="stat-card" href="{% url 'events:list' %}"><strong>{{ competitions|length }}</strong>Соревнований</a>
+    <a class="stat-card" href="{% url 'athletes:list' %}"><strong>{{ participants|length }}</strong>Участников</a>
+    <a class="stat-card" href="{% url 'clubs:list' %}"><strong>{{ teams|length }}</strong>Команд</a>
+    <a class="stat-card" href="{% url 'scores:list' %}"><strong>{{ results|length }}</strong>Результатов</a>
+  </div>
+{% endblock %}

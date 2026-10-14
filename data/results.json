@@ -1,0 +1,4 @@
+[
+  {"id": 1, "participant_id": 1, "competition_id": 1, "time_seconds": 745.0},
+  {"id": 2, "participant_id": 2, "competition_id": 1, "time_seconds": 726.0}
+]
